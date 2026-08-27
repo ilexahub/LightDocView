@@ -1,0 +1,383 @@
+:root {
+  --bg: #dcd6cc;
+  --paper: #fffdf8;
+  --ink: #1c242d;
+  --muted: #5c6772;
+  --line: #cfc6b8;
+  --toolbar: #24303c;
+  --toolbar-ink: #f4efe6;
+  --accent: #c45c26;
+  --accent-ink: #fff;
+  --sheet: #f3eee4;
+  --grid: #d7dde3;
+  --grid-head: #eef2f5;
+  --danger: #8f2d22;
+  --danger-bg: #f8e6e2;
+  --shadow: 0 18px 40px rgba(36, 48, 60, 0.12);
+  font-family: "Segoe UI", "Noto Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--toolbar);
+  color: var(--toolbar-ink);
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background:
+    linear-gradient(135deg, #f1d3bf 0 42%, transparent 42%),
+    linear-gradient(#fff 0 0);
+  box-shadow: inset 0 0 0 2px #e7c4ae;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 12px;
+  height: 8px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #c45c26 0 1px,
+      transparent 1px 3px
+    );
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand-text strong {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.file-name {
+  font-size: 12px;
+  color: #c9d2da;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46vw;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: #3a4754;
+  color: var(--toolbar-ink);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: #4a5968;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #d4682e;
+}
+
+.btn.icon {
+  width: 32px;
+  padding: 7px 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.zoom-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+  color: #d5dde4;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  padding: 8px 16px;
+  background: #efe6d8;
+  color: var(--muted);
+  font-size: 13px;
+  border-bottom: 1px solid var(--line);
+}
+
+.workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.sheets {
+  width: 180px;
+  flex-shrink: 0;
+  background: var(--sheet);
+  border-right: 1px solid var(--line);
+  overflow: auto;
+  padding: 10px 8px;
+}
+
+.sheet-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.sheet-btn:hover {
+  background: #e6ddd0;
+}
+
+.sheet-btn.active {
+  background: #fff;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+.stage {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.empty {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.empty-card {
+  max-width: 460px;
+  background: var(--paper);
+  padding: 28px 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.empty-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.empty-copy,
+.empty-hint {
+  margin: 0 0 10px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.empty-hint {
+  font-size: 12px;
+}
+
+.viewer {
+  min-height: 100%;
+  padding: 24px;
+}
+
+.viewer.docx-view {
+  background: #cfc8bc;
+}
+
+.viewer.xlsx-view {
+  padding: 0;
+  background: #fff;
+}
+
+.viewer.doc-view {
+  background: var(--bg);
+}
+
+.doc-text {
+  max-width: 820px;
+  margin: 0 auto;
+  background: var(--paper);
+  padding: 36px 42px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  white-space: pre-wrap;
+  line-height: 1.55;
+  font-size: 15px;
+}
+
+.doc-banner {
+  max-width: 820px;
+  margin: 0 auto 16px;
+  background: #f6ead6;
+  color: #6a4a22;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.error-panel {
+  margin: 32px auto;
+  max-width: 520px;
+  background: var(--danger-bg);
+  color: var(--danger);
+  padding: 18px 20px;
+  border-radius: 12px;
+  line-height: 1.45;
+}
+
+.xlsx-wrap {
+  min-height: 100%;
+}
+
+.xlsx-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 100%;
+}
+
+.xlsx-table th,
+.xlsx-table td {
+  border: 1px solid var(--grid);
+  padding: 4px 8px;
+  white-space: pre;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.xlsx-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--grid-head);
+  font-weight: 600;
+}
+
+.xlsx-table th.row-head {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--grid-head);
+  text-align: right;
+  color: var(--muted);
+  min-width: 36px;
+}
+
+.xlsx-table thead th.row-head {
+  z-index: 3;
+}
+
+.more-rows {
+  margin: 12px;
+}
+
+.docx-wrapper {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.docx-wrapper > section.docx {
+  box-shadow: var(--shadow) !important;
+  margin: 0 auto 18px !important;
+  background: white;
+}
+
+.stage.dragover {
+  outline: 3px dashed var(--accent);
+  outline-offset: -10px;
+}
+
+@media print {
+  .toolbar,
+  .status,
+  .sheets,
+  .empty,
+  .doc-banner,
+  .more-rows {
+    display: none !important;
+  }
+
+  html,
+  body,
+  #app,
+  .workspace,
+  .stage,
+  .viewer {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    padding: 0 !important;
+  }
+
+  .docx-wrapper > section.docx {
+    box-shadow: none !important;
+    margin: 0 0 12px !important;
+  }
+}

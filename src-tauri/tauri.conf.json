@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "ViewDocxXlsX",
+  "version": "0.1.0",
+  "identifier": "com.vibecoding.viewdocx-xlsx",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Просмотрщик документов",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 560,
+        "dragDropEnabled": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' data: blob:"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "category": "Productivity",
+    "shortDescription": "Просмотр DOCX и XLSX без Microsoft Office",
+    "longDescription": "Лёгкий просмотрщик документов Word и таблиц Excel. Файлы читаются только с диска и никуда не отправляются.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "fileAssociations": [
+      {
+        "name": "Word Document",
+        "description": "Документ Word",
+        "role": "Viewer",
+        "ext": ["docx"],
+        "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      },
+      {
+        "name": "Excel Workbook",
+        "description": "Книга Excel",
+        "role": "Viewer",
+        "ext": ["xlsx"],
+        "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      },
+      {
+        "name": "Excel 97-2003 Workbook",
+        "description": "Таблица Excel 97–2003",
+        "role": "Viewer",
+        "ext": ["xls"],
+        "mimeType": "application/vnd.ms-excel"
+      },
+      {
+        "name": "Word 97-2003 Document",
+        "description": "Документ Word 97–2003",
+        "role": "Viewer",
+        "ext": ["doc"],
+        "mimeType": "application/msword"
+      }
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "both",
+        "displayLanguageSelector": false
+      }
+    }
+  }
+}

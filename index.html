@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Просмотрщик документов</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="toolbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div class="brand-text">
+            <strong>Просмотрщик</strong>
+            <span id="file-name" class="file-name">файл не открыт</span>
+          </div>
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" id="btn-open" class="btn primary">Открыть</button>
+          <div class="zoom-group" role="group" aria-label="Масштаб">
+            <button type="button" id="btn-zoom-out" class="btn icon" title="Мельче" disabled>−</button>
+            <span id="zoom-label">100%</span>
+            <button type="button" id="btn-zoom-in" class="btn icon" title="Крупнее" disabled>+</button>
+          </div>
+          <button type="button" id="btn-print" class="btn" disabled>Печать</button>
+        </div>
+      </header>
+
+      <div id="status" class="status" hidden></div>
+
+      <div class="workspace">
+        <aside id="sheets" class="sheets" hidden></aside>
+        <main id="stage" class="stage">
+          <div id="empty" class="empty">
+            <div class="empty-card">
+              <p class="empty-title">Откройте документ</p>
+              <p class="empty-copy">
+                Перетащите сюда файл или нажмите «Открыть».
+                Поддерживаются <b>.docx</b>, <b>.xlsx</b>, <b>.xls</b>.
+                Старый <b>.doc</b> — только текст, если получится его вытащить.
+              </p>
+              <p class="empty-hint">Файлы остаются на этом компьютере и никуда не отправляются.</p>
+            </div>
+          </div>
+          <div id="viewer" class="viewer" hidden></div>
+          <div id="error" class="error-panel" hidden></div>
+        </main>
+      </div>
+    </div>
+    <input
+      id="file-input"
+      type="file"
+      accept=".docx,.xlsx,.xls,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/msword"
+      hidden
+    />
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
