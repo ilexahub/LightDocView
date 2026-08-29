@@ -91,10 +91,11 @@ async function openDocument(doc: OpenedDocument): Promise<void> {
 
   fileNameEl.textContent = doc.name;
   setStatus("Открываю…");
+  emptyEl.hidden = true;
+  errorEl.hidden = true;
   sheetsEl.hidden = true;
   sheetsEl.replaceChildren();
   viewerEl.replaceChildren();
-  errorEl.hidden = true;
 
   try {
     if (ext === "docx") {
