@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Просмотрщик документов</title>
+    <title>Гляделка</title>
   </head>
   <body>
     <div id="app">
@@ -12,16 +13,18 @@
         <div class="brand">
           <span class="brand-mark" aria-hidden="true"></span>
           <div class="brand-text">
-            <strong>Просмотрщик</strong>
+            <strong>Гляделка</strong>
             <span id="file-name" class="file-name">файл не открыт</span>
           </div>
         </div>
         <div class="toolbar-actions">
-          <button type="button" id="btn-open" class="btn primary">Открыть</button>
-          <div class="zoom-group" role="group" aria-label="Масштаб">
-            <button type="button" id="btn-zoom-out" class="btn icon" title="Мельче" disabled>−</button>
-            <span id="zoom-label">100%</span>
-            <button type="button" id="btn-zoom-in" class="btn icon" title="Крупнее" disabled>+</button>
+          <div class="toolbar-main">
+            <button type="button" id="btn-open" class="btn primary">Открыть</button>
+            <div class="zoom-group" role="group" aria-label="Масштаб">
+              <button type="button" id="btn-zoom-out" class="btn icon" title="Мельче" disabled>−</button>
+              <span id="zoom-label">100%</span>
+              <button type="button" id="btn-zoom-in" class="btn icon" title="Крупнее" disabled>+</button>
+            </div>
           </div>
           <button type="button" id="btn-print" class="btn" disabled>Печать</button>
         </div>
